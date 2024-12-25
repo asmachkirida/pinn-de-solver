@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: profile-service
+  profiles:
+    active: ${PROFILES}
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: config-service
+      fail-fast: true
+      retry:
+        max-attempts: 10
+      label: ${GIT_BRANCH}
+
+  
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: admin
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  mvc:
+    format:
+      date: dd/MM/yyyy
+
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 7
+  client:
+    refresh:
+      enable: false
+    service-url:
+      defaultZone: ${HTTP}://${BASIC_AUTH_EUREKA}${DNS}/eureka/
+

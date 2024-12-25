@@ -1,0 +1,14 @@
+package com.habitapp.authentication_service.domain.facade;
+
+import com.habitapp.authentication_service.domain.exception.account.*;
+import com.habitapp.authentication_service.dto.account.AccountAndInformationDTO;
+import com.habitapp.authentication_service.dto.account.AccountEmailAndActivationTokenDTO;
+import com.habitapp.authentication_service.dto.jwt.AccessTokenAndRefreshTokenDTO;
+import com.habitapp.authentication_service.proxy.exception.common.*;
+
+public interface AccountFacade {
+    public void createIndividualAccountWithDefaultMethod(AccountAndInformationDTO account) throws EmailPatternNotValidException, PasswordPatternNotValidException, EmailNotFoundException, PasswordNotFoundException, UrlConfigurationNotFoundException, AccountAlreadyExistsException, RoleNotFoundException, RolePrefixException, RoleNotDefinedException, AccountNotCreatedException, PermissionPrefixException, PermissionNotDefinedException, UnexpectedException, UnauthorizedException, UnprocessableEntityException, ForbiddenException, InternalServerErrorException;
+    public AccessTokenAndRefreshTokenDTO activateTheIndividualAccountCreatedByDefaultMethod(AccountEmailAndActivationTokenDTO accountEmailAndActivationTokenDTO) throws EmailNotFoundException, VerificationTokenNotFoundException, EmailPatternNotValidException, VerificationTokenPatternNotValidException, AccountNotFoundException, VerificationTokenDurationExpiredException, AccountIsActivatedException, VerificationTokensNotEqualsException;
+    public void updateIndividualAccountWithDefaultMethod(AccountAndInformationDTO account) throws PasswordPatternNotValidException, PasswordNotFoundException, AccountNotFoundException, UnexpectedException, UnauthorizedException;
+
+}

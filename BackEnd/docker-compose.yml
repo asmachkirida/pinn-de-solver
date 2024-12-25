@@ -1,0 +1,130 @@
+name: Equation-Differential-Backend
+
+services:
+
+  mysql:
+    image: mysql:8.0 # You can use any MySQL version
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234  # Set root password
+    ports:
+      - "3306:3306"  # Expose MySQL on port 3307
+    volumes:
+      - mysql-data:/var/lib/mysql  # Persist MySQL data
+    networks:
+      - equation-differential
+  
+  registry-service:
+    hostname: localhost
+    build:
+      context: ./registry-service
+      dockerfile: Dockerfile
+      args:
+        - JAR_FILE=registry-service-0.0.1-SNAPSHOT.jar
+    image: registry-service
+    container_name: registry-service
+    env_file:
+      - ./environment/registry-information.env
+    ports:
+      - 8000:8000
+    networks:
+      - equation-differential
+
+  config-service:
+    hostname: config-service
+    build:
+      context: ./config-service
+      dockerfile: Dockerfile
+      args:
+        - JAR_FILE=config-service-0.0.1-SNAPSHOT.jar
+    depends_on:
+      - registry-service
+    image: config-service
+    container_name: config-service
+    env_file:
+      - ./environment/registry-information.env
+      - ./environment/config-information.env
+    ports:
+      - 8001:8001
+    networks:
+      - equation-differential
+
+  gateway-service:
+    hostname: gateway-service
+    build:
+      context: ./gateway-service
+      dockerfile: Dockerfile
+      args:
+        - JAR_FILE=gateway-service-0.0.1-SNAPSHOT.jar
+    depends_on:
+      - config-service
+    image: gateway-service
+    container_name: gateway-service
+    env_file:
+      - ./environment/registry-information.env
+    ports:
+      - 8002:8002
+    networks:
+      - equation-differential
+
+  authentication-service:
+    hostname: authentication-service
+    build:
+      context: ./authentication-service
+      dockerfile: Dockerfile
+      args:
+        - JAR_FILE=authentication-service-0.0.1-SNAPSHOT.jar
+    depends_on:
+      - gateway-service
+    image: authentication-service
+    container_name: authentication-service
+    env_file:
+      - ./environment/registry-information.env
+    ports:
+      - 8011:8011
+    networks:
+      - equation-differential
+
+  profile-service:
+    hostname: profile-service
+    build:
+      context: ./profile-service
+      dockerfile: Dockerfile
+      args:
+        - JAR_FILE=profile-service-0.0.1-SNAPSHOT.jar
+    depends_on:
+      - gateway-service
+    image: profile-service
+    container_name: profile-service
+    env_file:
+      - ./environment/registry-information.env
+    ports:
+      - 8012:8012
+    networks:
+      - equation-differential
+
+  emailing-service:
+    hostname: emailing-service
+    build:
+      context: ./emailing-service
+      dockerfile: Dockerfile
+      args:
+        - JAR_FILE=emailing-service-0.0.1-SNAPSHOT.jar
+    depends_on:
+      - gateway-service
+    image: emailing-service
+    container_name: emailing-service
+    env_file:
+      - ./environment/registry-information.env
+    ports:
+      - 8013:8013
+    networks:
+      - equation-differential
+
+
+volumes:
+  mysql-data:
+
+networks:
+  equation-differential:
+    driver: bridge
