@@ -32,6 +32,10 @@ The system is designed using a **microservices architecture**, which ensures fle
 
 ![archi](https://github.com/user-attachments/assets/a557f60d-338d-4e09-852b-81a411c0ee3e)
 
+### DevOps Architecture:
+![devops](https://github.com/user-attachments/assets/5afe1542-d293-46cf-832b-a6d0be7843d3)
+
+
 ## Technologies and Tools
 
 - **Frontend**: Angular
@@ -49,7 +53,7 @@ https://github.com/user-attachments/assets/8c3f45c9-9b8a-4211-a47b-d0db732c7a2a
 
 
 
-To run the demo locally, follow these steps:
+To run the app locally, follow these steps:
 
 ### Prerequisites:
 - Python 3.x
