@@ -44,7 +44,6 @@ The system is designed using a **microservices architecture**, which ensures fle
 - **DevOps**: Jenkins, SonarQube
 - **Programming Languages**: Python 3.x, Java 17+
 - **Other Tools**: Git, VPS server, NumPy
-- **License**: MIT License
 
 ## Demo
 
