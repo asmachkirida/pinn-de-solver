@@ -53,18 +53,14 @@ https://github.com/user-attachments/assets/8c3f45c9-9b8a-4211-a47b-d0db732c7a2a
 
 
 
-To run the app locally, follow these steps:
+## Test the application:
 
-### Prerequisites:
-- Python 3.x
-- Java 17+
-- Node.js (for Angular frontend)
+To test the app, visit the following URL:  
+[http://77.37.86.136:4200/](http://77.37.86.136:4200/)  
+The app is deployed on a VPS and should be fully functional at this address.
 
-### Steps:
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/asmachkirida/pinn-de-solver.git
-   cd pinn-de-solver
+
+
 
 ## Contributors
 - **Asma Chkirida** 
