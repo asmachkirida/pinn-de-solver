@@ -29,7 +29,6 @@ The system is designed using a **microservices architecture**, which ensures fle
 
 ### System Architecture:
 
-![System Architecture]
 
 ![archi](https://github.com/user-attachments/assets/a557f60d-338d-4e09-852b-81a411c0ee3e)
 
