@@ -69,8 +69,7 @@ The app is deployed on a VPS and should be fully functional at this address.
 - **Acharf Bouabdelli** 
 - **Ismael Benzbair** 
 
-## License
-This project is licensed under the **MIT License** - see the LICENSE file for details.
+
 
 ## Contact
 For questions or support, contact:
